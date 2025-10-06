@@ -7,15 +7,15 @@ This document summarizes the main types of data structures, their characteristic
 1. [Introduction](#1-introduction)
 2. [Types of Data Structures](#2-types-of-data-structures)
     - [Linear Data Structures](#21-linear-data-structures)
-        - Array
-        - Linked List
+        - [Array](#211-array)
+        - [Linked List](#212-linked-list)
             - Singly Linked List
             - Doubly Linked List
             - Circular Linked List
-        - Stack
-        - Queue
+        - [Stack](#213-stack)
+        - [Queue](#214-queue)
     - [Non-linear Data Structures](#22-non-linear-data-structures)
-        - Tree
+        - [Tree](#221-tree)
             - Root
             - Parent/Child
             - Leaf
@@ -25,11 +25,9 @@ This document summarizes the main types of data structures, their characteristic
             - Level
             - Degree
             - Edge
-        - Graph
+        - [Graph](#222-graph)
     - [Associative Data Structures](#23-associative-data-structures)
-        - Map
-3. [Complexity Analysis](#4-complexity-analysis)
-4. [Applications](#5-applications)
+        - [Map](#231-map)
 
 ---
 
@@ -51,66 +49,74 @@ Key characteristics:
 
 Linear data structures are simple to implement and efficient for operations that require accessing elements in order.
 
-- **Array**: Collection of elements identified by index.
+#### **2.1.1 Array**
+
+Collection of elements identified by index
+
+```go
+// Example: Array in Go
+var arr = [5]int{1, 2, 3, 4, 5}
+```
+
+#### **2.1.2 Linked List**
+
+Sequence of nodes, each containing data and references. There are several types
+
+1. **Singly Linked List**: Each node points to the next node. Traversal is forward only.
 
     ```go
-    // Example: Array in Go
-    var arr = [5]int{1, 2, 3, 4, 5}
+    // Example: Singly Linked List Node in Go
+    type Node struct {
+        data int
+        next *Node
+    }
     ```
 
-- **Linked List**: Sequence of nodes, each containing data and references. There are several types:
-
-    1. **Singly Linked List**: Each node points to the next node. Traversal is forward only.
-
-        ```go
-        // Example: Singly Linked List Node in Go
-        type Node struct {
-            data int
-            next *Node
-        }
-        ```
-
-    2. **Doubly Linked List**: Each node points to both the next and previous nodes. Traversal is possible in both directions.
-
-        ```go
-        // Example: Doubly Linked List Node in Go
-        type DNode struct {
-            data int
-            prev *DNode
-            next *DNode
-        }
-        ```
-
-    3. **Circular Linked List**: The last node points back to the first node, forming a circle. Can be singly or doubly linked.
-
-        ```go
-        // Example: Circular Singly Linked List Node in Go
-        type CNode struct {
-            data int
-            next *CNode
-        }
-        // In a circular list, the last node's next points to the head node.
-        ```
-
-- **Stack**: LIFO (Last In, First Out) structure.
+2. **Doubly Linked List**: Each node points to both the next and previous nodes. Traversal is possible in both directions.
 
     ```go
-    // Example: Stack using slice in Go
-    var stack []int
-    stack = append(stack, 10) // push
-    top := stack[len(stack)-1] // peek
-    stack = stack[:len(stack)-1] // pop
+    // Example: Doubly Linked List Node in Go
+    type DNode struct {
+        data int
+        prev *DNode
+        next *DNode
+    }
     ```
 
-- **Queue**: FIFO (First In, First Out) structure.
+3. **Circular Linked List**: The last node points back to the first node, forming a circle. Can be singly or doubly linked.
 
     ```go
-    // Example: Queue using slice in Go
-    var queue []int
-    queue = append(queue, 10) // enqueue
-    front := queue[0] // peek
-    queue = queue[1:] // dequeue
+    // Example: Circular Singly Linked List Node in Go
+    type CNode struct {
+        data int
+        next *CNode
+    }
+    // In a circular list, the last node's next points to the head node.
     ```
+
+#### **2.1.3 Stack**
+
+LIFO (Last In, First Out) structure
+
+```go
+// Example: Stack using slice in Go
+var stack []int
+stack = append(stack, 10) // push
+top := stack[len(stack)-1] // peek
+stack = stack[:len(stack)-1] // pop
+```
+
+#### **2.1.4 Queue**
+
+FIFO (First In, First Out) structure
+
+```go
+// Example: Queue using slice in Go
+var queue []int
+queue = append(queue, 10) // enqueue
+front := queue[0] // peek
+queue = queue[1:] // dequeue
+```
 
 ### 2.2 Non-linear Data Structures
 
@@ -131,68 +137,72 @@ Before we dive into trees and graphs, let's clarify two fundamental concepts: **
 - Edges define the relationships between nodes.
 ```
 
-- **Tree**: Hierarchical structure with nodes connected by edges.
+#### **2.2.1 Tree**
 
-    ```go
-    // Example: Binary Tree Node in Go
-    type TreeNode struct {
-        value int
-        left  *TreeNode
-        right *TreeNode
-    }
-    ```
+Hierarchical structure with nodes connected by edges.
 
-    Besides the basic structure, trees have several important concepts.
+```go
+// Example: Binary Tree Node in Go
+type TreeNode struct {
+    value int
+    left  *TreeNode
+    right *TreeNode
+}
+```
 
-    Let's consider the following multi-level tree:
+Besides the basic structure, trees have several important concepts.
 
-    ```text
-          1
-         / \
-        2   3
-      /   / \
-     4   5   6
-         /
-        7
-    ```
+Let's consider the following multi-level tree:
 
-    Key concepts of trees based on the above example:
+```text
+     1
+    / \
+   2   3
+ /   / \
+4   5   6
+    /
+   7
+```
 
-    1. **Root**: The topmost node in the tree. (Node 1)
-        - The starting point of the tree structure.
+Key concepts of trees based on the above example:
 
-    2. **Parent/Child**: A parent is a node directly above another; a child is directly below. (Node 3 is parent of 5 and 6; Node 5 is parent of 7)
-        - Defines hierarchical relationships.
+1. **Root**: The topmost node in the tree. (Node 1)
+    - The starting point of the tree structure.
 
-    3. **Leaf**: A node with no children. (Nodes 4, 6, 7)
-        - Represents endpoints in the tree.
+2. **Parent/Child**: A parent is a node directly above another; a child is directly below. (Node 3 is parent of 5 and 6; Node 5 is parent of 7)
+    - Defines hierarchical relationships.
 
-    4. **Subtree**: Any node and all its descendants. (Node 3 and its descendants: 5, 6, 7)
-        - Useful for recursive operations.
+3. **Leaf**: A node with no children. (Nodes 4, 6, 7)
+    - Represents endpoints in the tree.
 
-    5. **Height**: The number of edges on the longest downward path from the root to a leaf. (Height is 3: 1 → 3 → 5 → 7)
-        - Indicates the tree's depth.
+4. **Subtree**: Any node and all its descendants. (Node 3 and its descendants: 5, 6, 7)
+    - Useful for recursive operations.
 
-    6. **Depth**: The number of edges from the root to a given node. (Node 1: depth 0; Node 3: depth 1; Node 5: depth 2; Node 7: depth 3)
-        - Shows how far a node is from the root.
+5. **Height**: The number of edges on the longest downward path from the root to a leaf. (Height is 3: 1 → 3 → 5 → 7)
+    - Indicates the tree's depth.
 
-    7. **Level**: All nodes at the same depth. (Level 1: Node 1; Level 2: Nodes 2, 3; Level 3: Nodes 4, 5, 6; Level 4: Node 7)
-        - Groups nodes by their distance from the root.
+6. **Depth**: The number of edges from the root to a given node. (Node 1: depth 0; Node 3: depth 1; Node 5: depth 2; Node 7: depth 3)
+    - Shows how far a node is from the root.
 
-    8. **Degree**: The number of children a node has. (Node 1: degree 2; Node 3: degree 2; Node 5: degree 1; leaves: degree 0)
-        - Measures branching at each node.
+7. **Level**: All nodes at the same depth. (Level 1: Node 1; Level 2: Nodes 2, 3; Level 3: Nodes 4, 5, 6; Level 4: Node 7)
+    - Groups nodes by their distance from the root.
 
-    9. **Edge**: A connection between parent and child nodes. (E.g., 3–5, 5–7)
-        - Forms the structure of the tree.
+8. **Degree**: The number of children a node has. (Node 1: degree 2; Node 3: degree 2; Node 5: degree 1; leaves: degree 0)
+    - Measures branching at each node.
 
-- **Graph**: Set of nodes connected by edges, can be directed or undirected.
+9. **Edge**: A connection between parent and child nodes. (E.g., 3–5, 5–7)
+    - Forms the structure of the tree.
 
-    ```go
-    // Example: Graph using adjacency list in Go
-    type Graph struct {
-        adj map[int][]int
-    }
-    ```
+#### **2.2.2 Graph**
+
+Set of nodes connected by edges, can be directed or undirected.
+
+```go
+// Example: Graph using adjacency list in Go
+type Graph struct {
+    adj map[int][]int
+}
+```
 
 ### 2.3 Associative Data Structures
 
@@ -206,26 +216,17 @@ Key characteristics:
 
 Associative data structures are ideal for scenarios where you need to quickly find, add, or remove data based on a key.
 
-- **Map**: Collection of key-value pairs.
+#### **2.3.1 Map**
 
-    ```go
-    // Example: Map in Go
-    var m = map[string]int{"apple": 5, "banana": 3}
-    m["orange"] = 7 // insert
-    value := m["apple"] // lookup
-    delete(m, "banana") // delete
-    ```
+Collection of key-value pairs
 
-## 4. Complexity Analysis
-
-Understanding time and space complexity helps in choosing the right data structure for a problem.
-
-## 5. Applications
-
-- Database indexing
-- Network routing
-- Memory management
-- File systems
+```go
+// Example: Map in Go
+var m = map[string]int{"apple": 5, "banana": 3}
+m["orange"] = 7 // insert
+value := m["apple"] // lookup
+delete(m, "banana") // delete
+```
 
 ---
 

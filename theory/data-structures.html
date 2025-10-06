@@ -366,6 +366,7 @@ code {
     });
   </script>
 <h1 id="theory-of-data-structures">Theory of Data Structures</h1>
+<p>This document summarizes the main types of data structures, their characteristics, and common uses. It serves as a quick reference for understanding and selecting data structures in software development.</p>
 <h2 id="table-of-contents">Table of Contents</h2>
 <ol>
 <li><a href="#1-introduction">Introduction</a></li>
@@ -373,21 +374,21 @@ code {
 <ul>
 <li><a href="#21-linear-data-structures">Linear Data Structures</a>
 <ul>
-<li>Array</li>
-<li>Linked List
+<li><a href="#211-array">Array</a></li>
+<li><a href="#212-linked-list">Linked List</a>
 <ul>
 <li>Singly Linked List</li>
 <li>Doubly Linked List</li>
 <li>Circular Linked List</li>
 </ul>
 </li>
-<li>Stack</li>
-<li>Queue</li>
+<li><a href="#213-stack">Stack</a></li>
+<li><a href="#214-queue">Queue</a></li>
 </ul>
 </li>
 <li><a href="#22-non-linear-data-structures">Non-linear Data Structures</a>
 <ul>
-<li>Tree
+<li><a href="#221-tree">Tree</a>
 <ul>
 <li>Root</li>
 <li>Parent/Child</li>
@@ -400,19 +401,16 @@ code {
 <li>Edge</li>
 </ul>
 </li>
-<li>Graph</li>
+<li><a href="#222-graph">Graph</a></li>
 </ul>
 </li>
 <li><a href="#23-associative-data-structures">Associative Data Structures</a>
 <ul>
-<li>Map</li>
+<li><a href="#231-map">Map</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#3-operations-on-data-structures">Operations on Data Structures</a></li>
-<li><a href="#4-complexity-analysis">Complexity Analysis</a></li>
-<li><a href="#5-applications">Applications</a></li>
 </ol>
 <hr>
 <h2 id="1-introduction">1. Introduction</h2>
@@ -427,15 +425,13 @@ code {
 <li>Examples include arrays, linked lists, stacks, and queues.</li>
 </ul>
 <p>Linear data structures are simple to implement and efficient for operations that require accessing elements in order.</p>
-<ul>
-<li>
-<p><strong>Array</strong>: Collection of elements identified by index.</p>
+<h4 id="211-array"><strong>2.1.1 Array</strong></h4>
+<p>Collection of elements identified by index</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Array in Go</span>
 <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">5</span>]<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>}
 </div></code></pre>
-</li>
-<li>
-<p><strong>Linked List</strong>: Sequence of nodes, each containing data and references. There are several types:</p>
+<h4 id="212-linked-list"><strong>2.1.2 Linked List</strong></h4>
+<p>Sequence of nodes, each containing data and references. There are several types</p>
 <ol>
 <li>
 <p><strong>Singly Linked List</strong>: Each node points to the next node. Traversal is forward only.</p>
@@ -467,26 +463,22 @@ code {
 </div></code></pre>
 </li>
 </ol>
-</li>
-<li>
-<p><strong>Stack</strong>: LIFO (Last In, First Out) structure.</p>
+<h4 id="213-stack"><strong>2.1.3 Stack</strong></h4>
+<p>LIFO (Last In, First Out) structure</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Stack using slice in Go</span>
 <span class="hljs-keyword">var</span> stack []<span class="hljs-keyword">int</span>
 stack = <span class="hljs-built_in">append</span>(stack, <span class="hljs-number">10</span>) <span class="hljs-comment">// push</span>
 top := stack[<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>] <span class="hljs-comment">// peek</span>
 stack = stack[:<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>] <span class="hljs-comment">// pop</span>
 </div></code></pre>
-</li>
-<li>
-<p><strong>Queue</strong>: FIFO (First In, First Out) structure.</p>
+<h4 id="214-queue"><strong>2.1.4 Queue</strong></h4>
+<p>FIFO (First In, First Out) structure</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Queue using slice in Go</span>
 <span class="hljs-keyword">var</span> queue []<span class="hljs-keyword">int</span>
 queue = <span class="hljs-built_in">append</span>(queue, <span class="hljs-number">10</span>) <span class="hljs-comment">// enqueue</span>
 front := queue[<span class="hljs-number">0</span>] <span class="hljs-comment">// peek</span>
 queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">// dequeue</span>
 </div></code></pre>
-</li>
-</ul>
 <h3 id="22-non-linear-data-structures">2.2 Non-linear Data Structures</h3>
 <p>A non-linear data structure is a type of data structure where elements are not arranged sequentially. Instead, each element can be connected to multiple other elements, forming complex relationships.</p>
 <p>Key characteristics:</p>
@@ -500,9 +492,8 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 <pre class="hljs"><code><div>- Nodes hold the data.
 - Edges define the relationships between nodes.
 </div></code></pre>
-<ul>
-<li>
-<p><strong>Tree</strong>: Hierarchical structure with nodes connected by edges.</p>
+<h4 id="221-tree"><strong>2.2.1 Tree</strong></h4>
+<p>Hierarchical structure with nodes connected by edges.</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Binary Tree Node in Go</span>
 <span class="hljs-keyword">type</span> TreeNode <span class="hljs-keyword">struct</span> {
     value <span class="hljs-keyword">int</span>
@@ -512,13 +503,13 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 </div></code></pre>
 <p>Besides the basic structure, trees have several important concepts.</p>
 <p>Let's consider the following multi-level tree:</p>
-<pre class="hljs"><code><div>      1
-     / \
-    2   3
-  /   / \
- 4   5   6
-     /
-    7
+<pre class="hljs"><code><div>     1
+    / \
+   2   3
+ /   / \
+4   5   6
+    /
+   7
 </div></code></pre>
 <p>Key concepts of trees based on the above example:</p>
 <ol>
@@ -577,16 +568,13 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 </ul>
 </li>
 </ol>
-</li>
-<li>
-<p><strong>Graph</strong>: Set of nodes connected by edges, can be directed or undirected.</p>
+<h4 id="222-graph"><strong>2.2.2 Graph</strong></h4>
+<p>Set of nodes connected by edges, can be directed or undirected.</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Graph using adjacency list in Go</span>
 <span class="hljs-keyword">type</span> Graph <span class="hljs-keyword">struct</span> {
     adj <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>][]<span class="hljs-keyword">int</span>
 }
 </div></code></pre>
-</li>
-</ul>
 <h3 id="23-associative-data-structures">2.3 Associative Data Structures</h3>
 <p>Associative data structures store data as key-value pairs, allowing efficient access, insertion, and deletion by key. They are not organized sequentially or hierarchically, but by association.</p>
 <p>Key characteristics:</p>
@@ -596,34 +584,14 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 <li>Examples include maps in Go, dictionaries in Python, and hash tables in many languages.</li>
 </ul>
 <p>Associative data structures are ideal for scenarios where you need to quickly find, add, or remove data based on a key.</p>
-<ul>
-<li>
-<p><strong>Map</strong>: Collection of key-value pairs.</p>
+<h4 id="231-map"><strong>2.3.1 Map</strong></h4>
+<p>Collection of key-value pairs</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Map in Go</span>
 <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">int</span>{<span class="hljs-string">"apple"</span>: <span class="hljs-number">5</span>, <span class="hljs-string">"banana"</span>: <span class="hljs-number">3</span>}
 m[<span class="hljs-string">"orange"</span>] = <span class="hljs-number">7</span> <span class="hljs-comment">// insert</span>
 value := m[<span class="hljs-string">"apple"</span>] <span class="hljs-comment">// lookup</span>
 <span class="hljs-built_in">delete</span>(m, <span class="hljs-string">"banana"</span>) <span class="hljs-comment">// delete</span>
 </div></code></pre>
-</li>
-</ul>
-<h2 id="3-operations-on-data-structures">3. Operations on Data Structures</h2>
-<ul>
-<li>Insertion</li>
-<li>Deletion</li>
-<li>Traversal</li>
-<li>Searching</li>
-<li>Sorting</li>
-</ul>
-<h2 id="4-complexity-analysis">4. Complexity Analysis</h2>
-<p>Understanding time and space complexity helps in choosing the right data structure for a problem.</p>
-<h2 id="5-applications">5. Applications</h2>
-<ul>
-<li>Database indexing</li>
-<li>Network routing</li>
-<li>Memory management</li>
-<li>File systems</li>
-</ul>
 <hr>
 <p><em>Expand each section with more details as you learn.</em></p>
 
