@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>data-structures.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="theory-of-data-structures">Theory of Data Structures</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-types-of-data-structures">Types of Data Structures</a>
+<ul>
+<li><a href="#21-linear-data-structures">Linear Data Structures</a>
+<ul>
+<li>Array</li>
+<li>Linked List
+<ul>
+<li>Singly Linked List</li>
+<li>Doubly Linked List</li>
+<li>Circular Linked List</li>
+</ul>
+</li>
+<li>Stack</li>
+<li>Queue</li>
+</ul>
+</li>
+<li><a href="#22-non-linear-data-structures">Non-linear Data Structures</a>
+<ul>
+<li>Tree
+<ul>
+<li>Root</li>
+<li>Parent/Child</li>
+<li>Leaf</li>
+<li>Subtree</li>
+<li>Height</li>
+<li>Depth</li>
+<li>Level</li>
+<li>Degree</li>
+<li>Edge</li>
+</ul>
+</li>
+<li>Graph</li>
+</ul>
+</li>
+<li><a href="#23-associative-data-structures">Associative Data Structures</a>
+<ul>
+<li>Map</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-operations-on-data-structures">Operations on Data Structures</a></li>
+<li><a href="#4-complexity-analysis">Complexity Analysis</a></li>
+<li><a href="#5-applications">Applications</a></li>
+</ol>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>A data structure is a specialized format for organizing, processing, and storing data in a computer so that operations such as retrieval, insertion, deletion, and traversal can be performed efficiently. Choosing the appropriate data structure is crucial for optimizing the performance and scalability of algorithms and applications.</p>
+<h2 id="2-types-of-data-structures">2. Types of Data Structures</h2>
+<h3 id="21-linear-data-structures">2.1 Linear Data Structures</h3>
+<p>A linear data structure is a type of data structure where elements are arranged sequentially, and each element has a unique predecessor and successor (except the first and last elements). In linear data structures, data is organized in a single line, making traversal straightforward from one end to the other.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Elements are stored in a contiguous or sequential manner.</li>
+<li>Traversal is typically done in a single direction (left to right or vice versa).</li>
+<li>Examples include arrays, linked lists, stacks, and queues.</li>
+</ul>
+<p>Linear data structures are simple to implement and efficient for operations that require accessing elements in order.</p>
+<ul>
+<li>
+<p><strong>Array</strong>: Collection of elements identified by index.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Array in Go</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">5</span>]<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>}
+</div></code></pre>
+</li>
+<li>
+<p><strong>Linked List</strong>: Sequence of nodes, each containing data and references. There are several types:</p>
+<ol>
+<li>
+<p><strong>Singly Linked List</strong>: Each node points to the next node. Traversal is forward only.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Singly Linked List Node in Go</span>
+<span class="hljs-keyword">type</span> Node <span class="hljs-keyword">struct</span> {
+    data <span class="hljs-keyword">int</span>
+    next *Node
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>Doubly Linked List</strong>: Each node points to both the next and previous nodes. Traversal is possible in both directions.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Doubly Linked List Node in Go</span>
+<span class="hljs-keyword">type</span> DNode <span class="hljs-keyword">struct</span> {
+    data <span class="hljs-keyword">int</span>
+    prev *DNode
+    next *DNode
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>Circular Linked List</strong>: The last node points back to the first node, forming a circle. Can be singly or doubly linked.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Circular Singly Linked List Node in Go</span>
+<span class="hljs-keyword">type</span> CNode <span class="hljs-keyword">struct</span> {
+    data <span class="hljs-keyword">int</span>
+    next *CNode
+}
+<span class="hljs-comment">// In a circular list, the last node's next points to the head node.</span>
+</div></code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Stack</strong>: LIFO (Last In, First Out) structure.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Stack using slice in Go</span>
+<span class="hljs-keyword">var</span> stack []<span class="hljs-keyword">int</span>
+stack = <span class="hljs-built_in">append</span>(stack, <span class="hljs-number">10</span>) <span class="hljs-comment">// push</span>
+top := stack[<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>] <span class="hljs-comment">// peek</span>
+stack = stack[:<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>] <span class="hljs-comment">// pop</span>
+</div></code></pre>
+</li>
+<li>
+<p><strong>Queue</strong>: FIFO (First In, First Out) structure.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Queue using slice in Go</span>
+<span class="hljs-keyword">var</span> queue []<span class="hljs-keyword">int</span>
+queue = <span class="hljs-built_in">append</span>(queue, <span class="hljs-number">10</span>) <span class="hljs-comment">// enqueue</span>
+front := queue[<span class="hljs-number">0</span>] <span class="hljs-comment">// peek</span>
+queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">// dequeue</span>
+</div></code></pre>
+</li>
+</ul>
+<h3 id="22-non-linear-data-structures">2.2 Non-linear Data Structures</h3>
+<p>A non-linear data structure is a type of data structure where elements are not arranged sequentially. Instead, each element can be connected to multiple other elements, forming complex relationships.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Elements are organized in a hierarchical or interconnected manner.</li>
+<li>Traversal can occur in multiple directions, not just linearly.</li>
+<li>Examples include trees and graphs.</li>
+</ul>
+<p>Non-linear data structures are useful for representing relationships like hierarchies (tree structures) or networks (graph structures), where simple linear organization is insufficient. They allow for more flexible and powerful ways to store and access data.</p>
+<p>Before we dive into trees and graphs, let's clarify two fundamental concepts: <strong>nodes</strong> and <strong>edges</strong>.</p>
+<pre class="hljs"><code><div>- Nodes hold the data.
+- Edges define the relationships between nodes.
+</div></code></pre>
+<ul>
+<li>
+<p><strong>Tree</strong>: Hierarchical structure with nodes connected by edges.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Binary Tree Node in Go</span>
+<span class="hljs-keyword">type</span> TreeNode <span class="hljs-keyword">struct</span> {
+    value <span class="hljs-keyword">int</span>
+    left  *TreeNode
+    right *TreeNode
+}
+</div></code></pre>
+<p>Besides the basic structure, trees have several important concepts.</p>
+<p>Let's consider the following multi-level tree:</p>
+<pre class="hljs"><code><div>      1
+     / \
+    2   3
+  /   / \
+ 4   5   6
+     /
+    7
+</div></code></pre>
+<p>Key concepts of trees based on the above example:</p>
+<ol>
+<li>
+<p><strong>Root</strong>: The topmost node in the tree. (Node 1)</p>
+<ul>
+<li>The starting point of the tree structure.</li>
+</ul>
+</li>
+<li>
+<p><strong>Parent/Child</strong>: A parent is a node directly above another; a child is directly below. (Node 3 is parent of 5 and 6; Node 5 is parent of 7)</p>
+<ul>
+<li>Defines hierarchical relationships.</li>
+</ul>
+</li>
+<li>
+<p><strong>Leaf</strong>: A node with no children. (Nodes 4, 6, 7)</p>
+<ul>
+<li>Represents endpoints in the tree.</li>
+</ul>
+</li>
+<li>
+<p><strong>Subtree</strong>: Any node and all its descendants. (Node 3 and its descendants: 5, 6, 7)</p>
+<ul>
+<li>Useful for recursive operations.</li>
+</ul>
+</li>
+<li>
+<p><strong>Height</strong>: The number of edges on the longest downward path from the root to a leaf. (Height is 3: 1 → 3 → 5 → 7)</p>
+<ul>
+<li>Indicates the tree's depth.</li>
+</ul>
+</li>
+<li>
+<p><strong>Depth</strong>: The number of edges from the root to a given node. (Node 1: depth 0; Node 3: depth 1; Node 5: depth 2; Node 7: depth 3)</p>
+<ul>
+<li>Shows how far a node is from the root.</li>
+</ul>
+</li>
+<li>
+<p><strong>Level</strong>: All nodes at the same depth. (Level 1: Node 1; Level 2: Nodes 2, 3; Level 3: Nodes 4, 5, 6; Level 4: Node 7)</p>
+<ul>
+<li>Groups nodes by their distance from the root.</li>
+</ul>
+</li>
+<li>
+<p><strong>Degree</strong>: The number of children a node has. (Node 1: degree 2; Node 3: degree 2; Node 5: degree 1; leaves: degree 0)</p>
+<ul>
+<li>Measures branching at each node.</li>
+</ul>
+</li>
+<li>
+<p><strong>Edge</strong>: A connection between parent and child nodes. (E.g., 3–5, 5–7)</p>
+<ul>
+<li>Forms the structure of the tree.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Graph</strong>: Set of nodes connected by edges, can be directed or undirected.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Graph using adjacency list in Go</span>
+<span class="hljs-keyword">type</span> Graph <span class="hljs-keyword">struct</span> {
+    adj <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>][]<span class="hljs-keyword">int</span>
+}
+</div></code></pre>
+</li>
+</ul>
+<h3 id="23-associative-data-structures">2.3 Associative Data Structures</h3>
+<p>Associative data structures store data as key-value pairs, allowing efficient access, insertion, and deletion by key. They are not organized sequentially or hierarchically, but by association.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Elements are accessed via unique keys, not by position or hierarchy.</li>
+<li>Fast lookup, insertion, and deletion operations (typically O(1) with hashing).</li>
+<li>Examples include maps in Go, dictionaries in Python, and hash tables in many languages.</li>
+</ul>
+<p>Associative data structures are ideal for scenarios where you need to quickly find, add, or remove data based on a key.</p>
+<ul>
+<li>
+<p><strong>Map</strong>: Collection of key-value pairs.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Example: Map in Go</span>
+<span class="hljs-keyword">var</span> m = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">int</span>{<span class="hljs-string">"apple"</span>: <span class="hljs-number">5</span>, <span class="hljs-string">"banana"</span>: <span class="hljs-number">3</span>}
+m[<span class="hljs-string">"orange"</span>] = <span class="hljs-number">7</span> <span class="hljs-comment">// insert</span>
+value := m[<span class="hljs-string">"apple"</span>] <span class="hljs-comment">// lookup</span>
+<span class="hljs-built_in">delete</span>(m, <span class="hljs-string">"banana"</span>) <span class="hljs-comment">// delete</span>
+</div></code></pre>
+</li>
+</ul>
+<h2 id="3-operations-on-data-structures">3. Operations on Data Structures</h2>
+<ul>
+<li>Insertion</li>
+<li>Deletion</li>
+<li>Traversal</li>
+<li>Searching</li>
+<li>Sorting</li>
+</ul>
+<h2 id="4-complexity-analysis">4. Complexity Analysis</h2>
+<p>Understanding time and space complexity helps in choosing the right data structure for a problem.</p>
+<h2 id="5-applications">5. Applications</h2>
+<ul>
+<li>Database indexing</li>
+<li>Network routing</li>
+<li>Memory management</li>
+<li>File systems</li>
+</ul>
+<hr>
+<p><em>Expand each section with more details as you learn.</em></p>
+
+</body>
+</html>
