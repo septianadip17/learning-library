@@ -416,7 +416,7 @@ code {
 <h2 id="1-introduction">1. Introduction</h2>
 <p>A data structure is a specialized format for organizing, processing, and storing data in a computer so that operations such as retrieval, insertion, deletion, and traversal can be performed efficiently. Choosing the appropriate data structure is crucial for optimizing the performance and scalability of algorithms and applications.</p>
 <h2 id="2-types-of-data-structures">2. Types of Data Structures</h2>
-<h3 id="21-linear-data-structures">2.1 Linear Data Structures</h3>
+<h3 id="21-linear-data-structures">2.1. Linear Data Structures</h3>
 <p>A linear data structure is a type of data structure where elements are arranged sequentially, and each element has a unique predecessor and successor (except the first and last elements). In linear data structures, data is organized in a single line, making traversal straightforward from one end to the other.</p>
 <p>Key characteristics:</p>
 <ul>
@@ -425,12 +425,12 @@ code {
 <li>Examples include arrays, linked lists, stacks, and queues.</li>
 </ul>
 <p>Linear data structures are simple to implement and efficient for operations that require accessing elements in order.</p>
-<h4 id="211-array"><strong>2.1.1 Array</strong></h4>
+<h4 id="211-array"><strong>2.1.1. Array</strong></h4>
 <p>Collection of elements identified by index</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Array in Go</span>
 <span class="hljs-keyword">var</span> arr = [<span class="hljs-number">5</span>]<span class="hljs-keyword">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>}
 </div></code></pre>
-<h4 id="212-linked-list"><strong>2.1.2 Linked List</strong></h4>
+<h4 id="212-linked-list"><strong>2.1.2. Linked List</strong></h4>
 <p>Sequence of nodes, each containing data and references. There are several types</p>
 <ol>
 <li>
@@ -463,7 +463,7 @@ code {
 </div></code></pre>
 </li>
 </ol>
-<h4 id="213-stack"><strong>2.1.3 Stack</strong></h4>
+<h4 id="213-stack"><strong>2.1.3. Stack</strong></h4>
 <p>LIFO (Last In, First Out) structure</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Stack using slice in Go</span>
 <span class="hljs-keyword">var</span> stack []<span class="hljs-keyword">int</span>
@@ -471,7 +471,7 @@ stack = <span class="hljs-built_in">append</span>(stack, <span class="hljs-numbe
 top := stack[<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>] <span class="hljs-comment">// peek</span>
 stack = stack[:<span class="hljs-built_in">len</span>(stack)<span class="hljs-number">-1</span>] <span class="hljs-comment">// pop</span>
 </div></code></pre>
-<h4 id="214-queue"><strong>2.1.4 Queue</strong></h4>
+<h4 id="214-queue"><strong>2.1.4. Queue</strong></h4>
 <p>FIFO (First In, First Out) structure</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Queue using slice in Go</span>
 <span class="hljs-keyword">var</span> queue []<span class="hljs-keyword">int</span>
@@ -479,7 +479,7 @@ queue = <span class="hljs-built_in">append</span>(queue, <span class="hljs-numbe
 front := queue[<span class="hljs-number">0</span>] <span class="hljs-comment">// peek</span>
 queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">// dequeue</span>
 </div></code></pre>
-<h3 id="22-non-linear-data-structures">2.2 Non-linear Data Structures</h3>
+<h3 id="22-non-linear-data-structures">2.2. Non-linear Data Structures</h3>
 <p>A non-linear data structure is a type of data structure where elements are not arranged sequentially. Instead, each element can be connected to multiple other elements, forming complex relationships.</p>
 <p>Key characteristics:</p>
 <ul>
@@ -492,7 +492,7 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 <pre class="hljs"><code><div>- Nodes hold the data.
 - Edges define the relationships between nodes.
 </div></code></pre>
-<h4 id="221-tree"><strong>2.2.1 Tree</strong></h4>
+<h4 id="221-tree"><strong>2.2.1. Tree</strong></h4>
 <p>Hierarchical structure with nodes connected by edges.</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Binary Tree Node in Go</span>
 <span class="hljs-keyword">type</span> TreeNode <span class="hljs-keyword">struct</span> {
@@ -568,14 +568,14 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 </ul>
 </li>
 </ol>
-<h4 id="222-graph"><strong>2.2.2 Graph</strong></h4>
+<h4 id="222-graph"><strong>2.2.2. Graph</strong></h4>
 <p>Set of nodes connected by edges, can be directed or undirected.</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Graph using adjacency list in Go</span>
 <span class="hljs-keyword">type</span> Graph <span class="hljs-keyword">struct</span> {
     adj <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>][]<span class="hljs-keyword">int</span>
 }
 </div></code></pre>
-<h3 id="23-associative-data-structures">2.3 Associative Data Structures</h3>
+<h3 id="23-associative-data-structures">2.3. Associative Data Structures</h3>
 <p>Associative data structures store data as key-value pairs, allowing efficient access, insertion, and deletion by key. They are not organized sequentially or hierarchically, but by association.</p>
 <p>Key characteristics:</p>
 <ul>
@@ -584,7 +584,7 @@ queue = queue[<span class="hljs-number">1</span>:] <span class="hljs-comment">//
 <li>Examples include maps in Go, dictionaries in Python, and hash tables in many languages.</li>
 </ul>
 <p>Associative data structures are ideal for scenarios where you need to quickly find, add, or remove data based on a key.</p>
-<h4 id="231-map"><strong>2.3.1 Map</strong></h4>
+<h4 id="231-map"><strong>2.3.1. Map</strong></h4>
 <p>Collection of key-value pairs</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// Example: Map in Go</span>
 <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">int</span>{<span class="hljs-string">"apple"</span>: <span class="hljs-number">5</span>, <span class="hljs-string">"banana"</span>: <span class="hljs-number">3</span>}

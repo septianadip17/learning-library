@@ -37,7 +37,7 @@ A data structure is a specialized format for organizing, processing, and storing
 
 ## 2. Types of Data Structures
 
-### 2.1 Linear Data Structures
+### 2.1. Linear Data Structures
 
 A linear data structure is a type of data structure where elements are arranged sequentially, and each element has a unique predecessor and successor (except the first and last elements). In linear data structures, data is organized in a single line, making traversal straightforward from one end to the other.
 
@@ -49,7 +49,7 @@ Key characteristics:
 
 Linear data structures are simple to implement and efficient for operations that require accessing elements in order.
 
-#### **2.1.1 Array**
+#### **2.1.1. Array**
 
 Collection of elements identified by index
 
@@ -58,7 +58,7 @@ Collection of elements identified by index
 var arr = [5]int{1, 2, 3, 4, 5}
 ```
 
-#### **2.1.2 Linked List**
+#### **2.1.2. Linked List**
 
 Sequence of nodes, each containing data and references. There are several types
 
@@ -94,7 +94,7 @@ Sequence of nodes, each containing data and references. There are several types
     // In a circular list, the last node's next points to the head node.
     ```
 
-#### **2.1.3 Stack**
+#### **2.1.3. Stack**
 
 LIFO (Last In, First Out) structure
 
@@ -106,7 +106,7 @@ top := stack[len(stack)-1] // peek
 stack = stack[:len(stack)-1] // pop
 ```
 
-#### **2.1.4 Queue**
+#### **2.1.4. Queue**
 
 FIFO (First In, First Out) structure
 
@@ -118,7 +118,7 @@ front := queue[0] // peek
 queue = queue[1:] // dequeue
 ```
 
-### 2.2 Non-linear Data Structures
+### 2.2. Non-linear Data Structures
 
 A non-linear data structure is a type of data structure where elements are not arranged sequentially. Instead, each element can be connected to multiple other elements, forming complex relationships.
 
@@ -137,7 +137,7 @@ Before we dive into trees and graphs, let's clarify two fundamental concepts: **
 - Edges define the relationships between nodes.
 ```
 
-#### **2.2.1 Tree**
+#### **2.2.1. Tree**
 
 Hierarchical structure with nodes connected by edges.
 
@@ -193,7 +193,7 @@ Key concepts of trees based on the above example:
 9. **Edge**: A connection between parent and child nodes. (E.g., 3–5, 5–7)
     - Forms the structure of the tree.
 
-#### **2.2.2 Graph**
+#### **2.2.2. Graph**
 
 Set of nodes connected by edges, can be directed or undirected.
 
@@ -204,7 +204,7 @@ type Graph struct {
 }
 ```
 
-### 2.3 Associative Data Structures
+### 2.3. Associative Data Structures
 
 Associative data structures store data as key-value pairs, allowing efficient access, insertion, and deletion by key. They are not organized sequentially or hierarchically, but by association.
 
@@ -216,7 +216,7 @@ Key characteristics:
 
 Associative data structures are ideal for scenarios where you need to quickly find, add, or remove data based on a key.
 
-#### **2.3.1 Map**
+#### **2.3.1. Map**
 
 Collection of key-value pairs
 
