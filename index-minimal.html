@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Theory Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .topic {
+            background: white;
+            margin-bottom: 2rem;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-title {
+            background: #f7f7f7;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .topic-content {
+            padding: 0;
+        }
+
+        .link-item {
+            display: block;
+            padding: 0.9rem 1.5rem;
+            text-decoration: none;
+            color: #555;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.15s ease;
+            font-size: 0.95rem;
+        }
+
+        .link-item:hover {
+            background: #f8f8f8;
+            color: #007aff;
+        }
+
+        .link-item:last-child {
+            border-bottom: none;
+        }
+
+        .quick-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-tag {
+            background: #e8e8e8;
+            color: #666;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tag:hover {
+            background: #007aff;
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .topic-title {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+            }
+
+            .link-item {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="quick-nav">
+            <a href="#theory" class="nav-tag">Theory</a>
+            <a href="#examples" class="nav-tag">Examples</a>
+            <a href="#practice" class="nav-tag">Practice</a>
+            <a href="#reference" class="nav-tag">Reference</a>
+        </nav>
+
+        <section class="topic" id="theory">
+            <div class="topic-title">📖 Core Theory</div>
+            <div class="topic-content">
+                <a href="theory/data-structures.html" class="link-item">Data Structures Overview</a>
+                <a href="theory/linear-structures.html" class="link-item">Linear Data Structures</a>
+                <a href="theory/non-linear-structures.html" class="link-item">Trees and Graphs</a>
+                <a href="theory/hash-tables.html" class="link-item">Hash Tables & Maps</a>
+                <a href="theory/operations.html" class="link-item">Basic Operations</a>
+                <a href="theory/complexity.html" class="link-item">Time & Space Complexity</a>
+            </div>
+        </section>
+
+        <section class="topic" id="examples">
+            <div class="topic-title">💻 Code Examples</div>
+            <div class="topic-content">
+                <a href="examples/go-data-structures.html" class="link-item">Go Data Structure Examples</a>
+                <a href="examples/graph-implementation.html" class="link-item">Graph Implementation</a>
+                <a href="examples/sorting-algorithms.html" class="link-item">Sorting Algorithms</a>
+                <a href="examples/search-algorithms.html" class="link-item">Search Methods</a>
+                <a href="examples/leetcode-solutions.html" class="link-item">LeetCode Solutions</a>
+            </div>
+        </section>
+
+        <section class="topic" id="practice">
+            <div class="topic-title">🎯 Practice Problems</div>
+            <div class="topic-content">
+                <a href="practice/beginner-problems.html" class="link-item">Beginner Level</a>
+                <a href="practice/intermediate-problems.html" class="link-item">Intermediate Level</a>
+                <a href="practice/advanced-problems.html" class="link-item">Advanced Problems</a>
+                <a href="practice/coding-challenges.html" class="link-item">Daily Challenges</a>
+            </div>
+        </section>
+
+        <section class="topic" id="reference">
+            <div class="topic-title">📚 Quick Reference</div>
+            <div class="topic-content">
+                <a href="reference/cheatsheets.html" class="link-item">Algorithm Cheatsheets</a>
+                <a href="reference/go-syntax.html" class="link-item">Go Language Reference</a>
+                <a href="reference/complexity-guide.html" class="link-item">Big O Notation Guide</a>
+                <a href="reference/interview-prep.html" class="link-item">Interview Preparation</a>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            Programming Theory Collection
+        </div>
+    </div>
+</body>
+
+</html>

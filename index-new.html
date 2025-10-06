@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Library - Programming Reference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4a5568;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .topic-card h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .topic-card p {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+
+        .topic-links {
+            list-style: none;
+        }
+
+        .topic-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-links a {
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .topic-links a:hover {
+            color: #4c51bf;
+        }
+
+        .topic-links a::before {
+            content: "→";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">📚 Learning Library</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="theory.html">Theory</a></li>
+                <li><a href="examples.html">Examples</a></li>
+                <li><a href="practice.html">Practice</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Programming Knowledge Hub</h1>
+            <p>A comprehensive collection of programming theory, practical examples, and hands-on exercises. Built for
+                learners, by learners.</p>
+        </section>
+
+        <section class="topics-grid">
+            <div class="topic-card">
+                <h3>📊 Data Structures</h3>
+                <p>Master the fundamentals of organizing and storing data efficiently.</p>
+                <ul class="topic-links">
+                    <li><a href="theory/data-structures.html">Theory Overview</a></li>
+                    <li><a href="theory/linear-structures.html">Linear Structures</a></li>
+                    <li><a href="theory/non-linear-structures.html">Trees & Graphs</a></li>
+                    <li><a href="theory/hash-tables.html">Hash Tables & Maps</a></li>
+                </ul>
+            </div>
+
+            <div class="topic-card">
+                <h3>📊 Data Structures</h3>
+                <p>Master the fundamentals of organizing and storing data efficiently.</p>
+                <ul class="topic-links">
+                    <li><a href="theory/data-structures.html">Theory Overview</a></li>
+                    <li><a href="theory/linear-structures.html">Linear Structures</a></li>
+                    <li><a href="theory/non-linear-structures.html">Trees & Graphs</a></li>
+                    <li><a href="theory/hash-tables.html">Hash Tables & Maps</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Learning Library. Open source knowledge for everyone.</p>
+    </footer>
+</body>
+
+</html>
