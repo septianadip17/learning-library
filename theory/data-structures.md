@@ -4,30 +4,30 @@ This document summarizes the main types of data structures, their characteristic
 
 ## Table of Contents
 
-1. [Introduction](#1-introduction)
-2. [Types of Data Structures](#2-types-of-data-structures)
-    - [Linear Data Structures](#21-linear-data-structures)
-        - [Array](#211-array)
-        - [Linked List](#212-linked-list)
-            - Singly Linked List
-            - Doubly Linked List
-            - Circular Linked List
-        - [Stack](#213-stack)
-        - [Queue](#214-queue)
-    - [Non-linear Data Structures](#22-non-linear-data-structures)
-        - [Tree](#221-tree)
-            - Root
-            - Parent/Child
-            - Leaf
-            - Subtree
-            - Height
-            - Depth
-            - Level
-            - Degree
-            - Edge
-        - [Graph](#222-graph)
-    - [Associative Data Structures](#23-associative-data-structures)
-        - [Map](#231-map)
+- [Introduction](#1-introduction)
+- [Types of Data Structures](#2-types-of-data-structures)
+  - [Linear Data Structures](#21-linear-data-structures)
+    - [Array](#211-array)
+    - [Linked List](#212-linked-list)
+      - Singly Linked List
+      - Doubly Linked List
+      - Circular Linked List
+    - [Stack](#213-stack)
+    - [Queue](#214-queue)
+  - [Non-linear Data Structures](#22-non-linear-data-structures)
+    - [Tree](#221-tree)
+      - Root
+      - Parent/Child
+      - Leaf
+      - Subtree
+      - Height
+      - Depth
+      - Level
+      - Degree
+      - Edge
+    - [Graph](#222-graph)
+  - [Associative Data Structures](#23-associative-data-structures)
+    - [Map](#231-map)
 
 ---
 
