@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>operations-on-data-structures.md</title>
+<title>big-o-notation.md</title>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
 <style>
@@ -365,66 +365,112 @@ code {
           : 'default'
     });
   </script>
-<h1 id="operations-on-data-structures">Operations on Data Structures</h1>
-<p>This document covers the fundamental operations that can be performed on various data structures. Understanding these operations is essential for designing efficient algorithms and choosing the right data structure for a given problem.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
+<h1 id="big-o-notation">Big-O Notation</h1>
+<p>Big-O notation is a mathematical concept used in computer science to describe the efficiency of algorithms, especially how their running time or space requirements grow as the input size increases.</p>
+<h2 id="what-is-big-o-notation">What is Big-O Notation?</h2>
+<p>Big-O notation expresses the upper bound of an algorithm’s growth rate. It tells you how the runtime or space usage increases as the input size ($n$) grows, focusing on the worst-case scenario.</p>
+<h3 id="why-is-big-o-important">Why is Big-O Important?</h3>
 <ul>
-<li><a href="#insertion">Insertion</a></li>
-<li><a href="#deletion">Deletion</a></li>
-<li><a href="#traversal">Traversal</a></li>
-<li><a href="#searching">Searching</a></li>
-<li><a href="#sorting">Sorting</a></li>
+<li>It helps compare algorithms regardless of hardware or implementation.</li>
+<li>It predicts scalability and performance for large inputs.</li>
 </ul>
+<h2 id="common-big-o-classes">Common Big-O Classes</h2>
+<ul>
+<li>
+<p><strong>O(1) — Constant time:</strong><br>
+Example: Accessing an element in an array by index.</p>
+<pre class="hljs"><code><div>x := arr[<span class="hljs-number">5</span>]
+</div></code></pre>
+</li>
+<li>
+<p><strong>O(log n) — Logarithmic time:</strong><br>
+Example: Binary search in a sorted array.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> {
+        left, right := <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)<span class="hljs-number">-1</span>
+        <span class="hljs-keyword">for</span> left &lt;= right {
+                mid := (left + right) / <span class="hljs-number">2</span>
+                <span class="hljs-keyword">if</span> arr[mid] == target {
+                        <span class="hljs-keyword">return</span> mid
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> arr[mid] &lt; target {
+                        left = mid + <span class="hljs-number">1</span>
+                } <span class="hljs-keyword">else</span> {
+                        right = mid - <span class="hljs-number">1</span>
+                }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>O(n) — Linear time:</strong><br>
+Example: Looping through all elements in an array.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
+        fmt.Println(item)
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>O(n log n) — Linearithmic time:</strong><br>
+Example: Mergesort algorithm.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">mergeSort</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> []<span class="hljs-title">int</span></span> {
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) &lt;= <span class="hljs-number">1</span> {
+                <span class="hljs-keyword">return</span> arr
+        }
+        mid := <span class="hljs-built_in">len</span>(arr) / <span class="hljs-number">2</span>
+        left := mergeSort(arr[:mid])
+        right := mergeSort(arr[mid:])
+        <span class="hljs-keyword">return</span> merge(left, right)
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>O(n^2) — Quadratic time:</strong><br>
+Example: Nested loops to compare all pairs.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ {
+        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(arr); j++ {
+                fmt.Println(arr[i], arr[j])
+        }
+}
+</div></code></pre>
+</li>
+<li>
+<p><strong>O(2^n) — Exponential time:</strong><br>
+Example: Generating all subsets of a set.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">subsets</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> [][]<span class="hljs-title">int</span></span> {
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) == <span class="hljs-number">0</span> {
+                <span class="hljs-keyword">return</span> [][]<span class="hljs-keyword">int</span>{{}}
+        }
+        first := arr[<span class="hljs-number">0</span>]
+        rest := subsets(arr[<span class="hljs-number">1</span>:])
+        result := <span class="hljs-built_in">make</span>([][]<span class="hljs-keyword">int</span>, <span class="hljs-built_in">len</span>(rest)*<span class="hljs-number">2</span>)
+        <span class="hljs-built_in">copy</span>(result, rest)
+        <span class="hljs-keyword">for</span> i, subset := <span class="hljs-keyword">range</span> rest {
+                result[<span class="hljs-built_in">len</span>(rest)+i] = <span class="hljs-built_in">append</span>([]<span class="hljs-keyword">int</span>{first}, subset...)
+        }
+        <span class="hljs-keyword">return</span> result
+}
+</div></code></pre>
+</li>
+</ul>
+<h2 id="example">Example</h2>
+<p>Suppose you have a function that loops through an array:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">printItems</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
+    <span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
+        fmt.Println(item)
+    }
+}
+</div></code></pre>
+<p>This function is O(n) because it prints each item once.</p>
+<h2 id="how-to-find-big-o">How to Find Big-O</h2>
+<ol>
+<li>Count the number of basic operations as input grows.</li>
+<li>Ignore constants and lower-order terms.</li>
+<li>Focus on the dominant term as $n$ becomes large.</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Big-O notation helps you analyze and compare algorithms by describing their efficiency as input size increases. It’s a key tool for writing scalable, high-performance code.</p>
 <hr>
-<h2 id="insertion">Insertion</h2>
-<p>Insertion is the process of adding a new element to a data structure. The method and efficiency of insertion depend on the type of data structure:</p>
-<ul>
-<li><strong>Array:</strong> Insert at a specific index (may require shifting elements).</li>
-<li><strong>Linked List:</strong> Insert at the beginning, end, or any position by updating pointers.</li>
-<li><strong>Stack:</strong> Push an element onto the top.</li>
-<li><strong>Queue:</strong> Enqueue an element at the rear.</li>
-<li><strong>Tree:</strong> Insert a node at the correct position (e.g., in a BST).</li>
-<li><strong>Graph:</strong> Add a new vertex or edge.</li>
-<li><strong>Map:</strong> Add a new key-value pair.</li>
-</ul>
-<h2 id="deletion">Deletion</h2>
-<p>Deletion removes an element from a data structure. The process varies by structure:</p>
-<ul>
-<li><strong>Array:</strong> Remove at a specific index (may require shifting elements).</li>
-<li><strong>Linked List:</strong> Remove a node and update pointers.</li>
-<li><strong>Stack:</strong> Pop the top element.</li>
-<li><strong>Queue:</strong> Dequeue the front element.</li>
-<li><strong>Tree:</strong> Remove a node and restructure if necessary.</li>
-<li><strong>Graph:</strong> Remove a vertex or edge.</li>
-<li><strong>Map:</strong> Remove a key-value pair by key.</li>
-</ul>
-<h2 id="traversal">Traversal</h2>
-<p>Traversal means visiting each element in a data structure, often to process or display data:</p>
-<ul>
-<li><strong>Array/Linked List:</strong> Iterate from start to end.</li>
-<li><strong>Stack/Queue:</strong> Process elements in LIFO/FIFO order.</li>
-<li><strong>Tree:</strong> Use preorder, inorder, postorder, or level-order traversal.</li>
-<li><strong>Graph:</strong> Use depth-first search (DFS) or breadth-first search (BFS).</li>
-</ul>
-<h2 id="searching">Searching</h2>
-<p>Searching finds a specific element in a data structure:</p>
-<ul>
-<li><strong>Array:</strong> Linear or binary search.</li>
-<li><strong>Linked List:</strong> Linear search.</li>
-<li><strong>Stack/Queue:</strong> Linear search (rarely used).</li>
-<li><strong>Tree:</strong> Binary search (in BST), or traversal.</li>
-<li><strong>Graph:</strong> Search for a vertex or path using DFS/BFS.</li>
-<li><strong>Map:</strong> Direct lookup by key.</li>
-</ul>
-<h2 id="sorting">Sorting</h2>
-<p>Sorting arranges elements in a specific order:</p>
-<ul>
-<li><strong>Array/Linked List:</strong> Use algorithms like bubble sort, merge sort, quick sort, etc.</li>
-<li><strong>Tree:</strong> Inorder traversal of BST yields sorted order.</li>
-<li><strong>Other structures:</strong> May require conversion to a list/array for sorting.</li>
-</ul>
-<hr>
-<p><em>Expand each operation with examples and details as you learn.</em>
+<p><em>Expand each section with more details as you learn.</em>
 <em>Last updated: 2025-10-07</em></p>
 
 </body>

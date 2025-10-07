@@ -67,3 +67,4 @@ Sorting arranges elements in a specific order:
 ---
 
 *Expand each operation with examples and details as you learn.*
+*Last updated: 2025-10-07*
