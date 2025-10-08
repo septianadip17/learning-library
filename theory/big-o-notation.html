@@ -365,26 +365,44 @@ code {
           : 'default'
     });
   </script>
-<h1 id="big-o-notation">Big-O Notation</h1>
-<p>Big-O notation is a mathematical concept used in computer science to describe the efficiency of algorithms, especially how their running time or space requirements grow as the input size increases.</p>
-<h2 id="what-is-big-o-notation">What is Big-O Notation?</h2>
-<p>Big-O notation expresses the upper bound of an algorithm’s growth rate. It tells you how the runtime or space usage increases as the input size ($n$) grows, focusing on the worst-case scenario.</p>
-<h3 id="why-is-big-o-important">Why is Big-O Important?</h3>
+<h1 id="theory-of-big-o-notation">Theory of Big-O Notation</h1>
+<p>This document summarizes the concept of Big-O notation, its importance, common classes, and practical examples. It serves as a quick reference for analyzing and comparing algorithm efficiency in software development.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-why-is-big-o-important">Why is Big-O Important?</a></li>
+<li><a href="#3-common-big-o-classes">Common Big-O Classes</a>
+<ul>
+<li><a href="#31-o1--constant-time">O(1) — Constant Time</a></li>
+<li><a href="#32-olog-n--logarithmic-time">O(log n) — Logarithmic Time</a></li>
+<li><a href="#33-on--linear-time">O(n) — Linear Time</a></li>
+<li><a href="#34-on-log-n--linearithmic-time">O(n log n) — Linearithmic Time</a></li>
+<li><a href="#35-on2--quadratic-time">O(n^2) — Quadratic Time</a></li>
+<li><a href="#36-o2n--exponential-time">O(2^n) — Exponential Time</a></li>
+</ul>
+</li>
+<li><a href="#4-how-to-find-big-o">How to Find Big-O</a></li>
+<li><a href="#5-example">Example</a></li>
+<li><a href="#6-summary">Summary</a></li>
+</ul>
+<hr>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Big-O notation is a mathematical concept used in computer science to describe the efficiency of algorithms, especially how their running time or space requirements grow as the input size increases. It expresses the upper bound of an algorithm’s growth rate, focusing on the worst-case scenario.</p>
+<h2 id="2-why-is-big-o-important">2. Why is Big-O Important?</h2>
 <ul>
 <li>It helps compare algorithms regardless of hardware or implementation.</li>
 <li>It predicts scalability and performance for large inputs.</li>
 </ul>
-<h2 id="common-big-o-classes">Common Big-O Classes</h2>
-<ul>
-<li>
-<p><strong>O(1) — Constant time:</strong><br>
-Example: Accessing an element in an array by index.</p>
+<h2 id="3-common-big-o-classes">3. Common Big-O Classes</h2>
+<p>Big-O classes describe typical growth rates for algorithms. Here are the most common:</p>
+<h3 id="31-o1--constant-time">3.1. O(1) — Constant Time</h3>
+<p>The algorithm takes the same time regardless of input size.</p>
+<p><strong>Example:</strong> Accessing an element in an array by index</p>
 <pre class="hljs"><code><div>x := arr[<span class="hljs-number">5</span>]
 </div></code></pre>
-</li>
-<li>
-<p><strong>O(log n) — Logarithmic time:</strong><br>
-Example: Binary search in a sorted array.</p>
+<h3 id="32-olog-n--logarithmic-time">3.2. O(log n) — Logarithmic Time</h3>
+<p>Time grows slowly as input increases.</p>
+<p><strong>Example:</strong> Binary search in a sorted array</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> {
         left, right := <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)<span class="hljs-number">-1</span>
         <span class="hljs-keyword">for</span> left &lt;= right {
@@ -400,18 +418,16 @@ Example: Binary search in a sorted array.</p>
         <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
 }
 </div></code></pre>
-</li>
-<li>
-<p><strong>O(n) — Linear time:</strong><br>
-Example: Looping through all elements in an array.</p>
+<h3 id="33-on--linear-time">3.3. O(n) — Linear Time</h3>
+<p>Time grows directly with input size.</p>
+<p><strong>Example:</strong> Looping through all elements in an array</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
         fmt.Println(item)
 }
 </div></code></pre>
-</li>
-<li>
-<p><strong>O(n log n) — Linearithmic time:</strong><br>
-Example: Mergesort algorithm.</p>
+<h3 id="34-on-log-n--linearithmic-time">3.4. O(n log n) — Linearithmic Time</h3>
+<p>Common in efficient sorting algorithms.</p>
+<p><strong>Example:</strong> Mergesort algorithm</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">mergeSort</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> []<span class="hljs-title">int</span></span> {
         <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) &lt;= <span class="hljs-number">1</span> {
                 <span class="hljs-keyword">return</span> arr
@@ -422,20 +438,18 @@ Example: Mergesort algorithm.</p>
         <span class="hljs-keyword">return</span> merge(left, right)
 }
 </div></code></pre>
-</li>
-<li>
-<p><strong>O(n^2) — Quadratic time:</strong><br>
-Example: Nested loops to compare all pairs.</p>
+<h3 id="35-on2--quadratic-time">3.5. O(n^2) — Quadratic Time</h3>
+<p>Time grows with the square of input size.</p>
+<p><strong>Example:</strong> Nested loops to compare all pairs</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ {
         <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(arr); j++ {
                 fmt.Println(arr[i], arr[j])
         }
 }
 </div></code></pre>
-</li>
-<li>
-<p><strong>O(2^n) — Exponential time:</strong><br>
-Example: Generating all subsets of a set.</p>
+<h3 id="36-o2n--exponential-time">3.6. O(2^n) — Exponential Time</h3>
+<p>Time doubles with each additional input.</p>
+<p><strong>Example:</strong> Generating all subsets of a set</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">subsets</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> [][]<span class="hljs-title">int</span></span> {
         <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) == <span class="hljs-number">0</span> {
                 <span class="hljs-keyword">return</span> [][]<span class="hljs-keyword">int</span>{{}}
@@ -450,28 +464,26 @@ Example: Generating all subsets of a set.</p>
         <span class="hljs-keyword">return</span> result
 }
 </div></code></pre>
-</li>
-</ul>
-<h2 id="example">Example</h2>
-<p>Suppose you have a function that loops through an array:</p>
-<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">printItems</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
-    <span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
-        fmt.Println(item)
-    }
-}
-</div></code></pre>
-<p>This function is O(n) because it prints each item once.</p>
-<h2 id="how-to-find-big-o">How to Find Big-O</h2>
+<h2 id="4-how-to-find-big-o">4. How to Find Big-O</h2>
 <ol>
 <li>Count the number of basic operations as input grows.</li>
 <li>Ignore constants and lower-order terms.</li>
 <li>Focus on the dominant term as $n$ becomes large.</li>
 </ol>
-<h2 id="summary">Summary</h2>
+<h2 id="5-example">5. Example</h2>
+<p>Suppose you have a function that loops through an array:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">printItems</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
+        <span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
+                fmt.Println(item)
+        }
+}
+</div></code></pre>
+<p>This function is O(n) because it prints each item once.</p>
+<h2 id="6-summary">6. Summary</h2>
 <p>Big-O notation helps you analyze and compare algorithms by describing their efficiency as input size increases. It’s a key tool for writing scalable, high-performance code.</p>
 <hr>
 <p><em>Expand each section with more details as you learn.</em>
-<em>Last updated: 2025-10-07</em></p>
+<em>Last updated: 2025-10-08</em></p>
 
 </body>
 </html>
