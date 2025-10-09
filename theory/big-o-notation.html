@@ -464,8 +464,8 @@ code {
 }
 </div></code></pre>
 <h2 id="4-how-to-find-big-o">4. How to Find Big-O</h2>
-<p><strong>Count the number of basic operations as input grows:</strong>
-Big O notation measures how the steps an algorithm takes grow as the input gets bigger—like counting how many actions you need as your pile of toys increases.</p>
+<h3 id="41-count-the-number-of-basic-operations-as-input-grows"><strong>4.1. Count the number of basic operations as input grows</strong></h3>
+<p>Big O notation measures how the steps an algorithm takes grow as the input gets bigger—like counting how many actions you need as your pile of toys increases.</p>
 <p><strong>Go example:</strong></p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">exampleFunction</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
     sum := <span class="hljs-number">0</span>
@@ -476,8 +476,8 @@ Big O notation measures how the steps an algorithm takes grow as the input gets 
 }
 </div></code></pre>
 <p><strong>Explanation:</strong> This function loops through the array once, so it’s O(n) because the time grows linearly with the size of <code>arr</code>.</p>
-<p><strong>Ignore constants and lower-order terms:</strong>
-Big O shows how fast something grows as your problem gets bigger. We only care about the part that matters most when things get really large.</p>
+<h3 id="42-ignore-constants-and-lower-order-terms"><strong>4.2. Ignore constants and lower-order terms</strong></h3>
+<p>Big O shows how fast something grows as your problem gets bigger. We only care about the part that matters most when things get really large.</p>
 <p><strong>Go example:</strong></p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">exampleFunction</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
     <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ { <span class="hljs-comment">// O(n)</span>
@@ -488,8 +488,8 @@ Big O shows how fast something grows as your problem gets bigger. We only care a
 }
 </div></code></pre>
 <p><strong>Explanation:</strong> This function has a nested loop, so we multiply the time complexities: O(n) * O(n) = O(n^2).</p>
-<p><strong>Focus on the dominant term as n becomes large:</strong>
-As input grows, only the fastest-growing part matters. For example, in n^2 + n, n^2 dominates when n is large, so we call it O(n^2).</p>
+<h3 id="43-focus-on-the-dominant-term-as-n-becomes-large"><strong>4.3. Focus on the dominant term as n becomes large</strong></h3>
+<p>As input grows, only the fastest-growing part matters. For example, in n^2 + n, n^2 dominates when n is large, so we call it O(n^2).</p>
 <p><strong>Go example:</strong></p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findDuplicates</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> []<span class="hljs-title">int</span></span> {
     <span class="hljs-keyword">var</span> duplicates []<span class="hljs-keyword">int</span>

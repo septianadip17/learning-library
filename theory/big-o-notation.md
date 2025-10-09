@@ -133,7 +133,8 @@ func subsets(arr []int) [][]int {
 
 ## 4. How to Find Big-O
 
-**Count the number of basic operations as input grows:**
+### **4.1. Count the number of basic operations as input grows**
+
 Big O notation measures how the steps an algorithm takes grow as the input gets bigger—like counting how many actions you need as your pile of toys increases.
 
 **Go example:**
@@ -150,7 +151,8 @@ func exampleFunction(arr []int) {
 
 **Explanation:** This function loops through the array once, so it’s O(n) because the time grows linearly with the size of `arr`.
 
-**Ignore constants and lower-order terms:**
+### **4.2. Ignore constants and lower-order terms**
+
 Big O shows how fast something grows as your problem gets bigger. We only care about the part that matters most when things get really large.
 
 **Go example:**
@@ -167,7 +169,8 @@ func exampleFunction(arr []int) {
 
 **Explanation:** This function has a nested loop, so we multiply the time complexities: O(n) * O(n) = O(n^2).
 
-**Focus on the dominant term as n becomes large:**
+### **4.3. Focus on the dominant term as n becomes large**
+
 As input grows, only the fastest-growing part matters. For example, in n^2 + n, n^2 dominates when n is large, so we call it O(n^2).
 
 **Go example:**
