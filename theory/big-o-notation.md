@@ -15,8 +15,7 @@ This document summarizes the concept of Big-O notation, its importance, common c
   - [O(n^2) — Quadratic Time](#35-on2--quadratic-time)
   - [O(2^n) — Exponential Time](#36-o2n--exponential-time)
 - [How to Find Big-O](#4-how-to-find-big-o)
-- [Example](#5-example)
-- [Summary](#6-summary)
+- [Summary](#5-summary)
 
 ---
 
@@ -51,18 +50,18 @@ Time grows slowly as input increases.
 
 ```go
 func binarySearch(arr []int, target int) int {
-        left, right := 0, len(arr)-1
-        for left <= right {
-                mid := (left + right) / 2
-                if arr[mid] == target {
-                        return mid
-                } else if arr[mid] < target {
-                        left = mid + 1
-                } else {
-                        right = mid - 1
-                }
+    left, right := 0, len(arr)-1
+    for left <= right {
+        mid := (left + right) / 2
+        if arr[mid] == target {
+            return mid
+        } else if arr[mid] < target {
+            left = mid + 1
+        } else {
+            right = mid - 1
         }
-        return -1
+    }
+    return -1
 }
 ```
 
@@ -74,7 +73,7 @@ Time grows directly with input size.
 
 ```go
 for _, item := range arr {
-        fmt.Println(item)
+    fmt.Println(item)
 }
 ```
 
@@ -86,13 +85,13 @@ Common in efficient sorting algorithms.
 
 ```go
 func mergeSort(arr []int) []int {
-        if len(arr) <= 1 {
-                return arr
-        }
-        mid := len(arr) / 2
-        left := mergeSort(arr[:mid])
-        right := mergeSort(arr[mid:])
-        return merge(left, right)
+    if len(arr) <= 1 {
+        return arr
+    }
+    mid := len(arr) / 2
+    left := mergeSort(arr[:mid])
+    right := mergeSort(arr[mid:])
+    return merge(left, right)
 }
 ```
 
@@ -104,9 +103,9 @@ Time grows with the square of input size.
 
 ```go
 for i := 0; i < len(arr); i++ {
-        for j := 0; j < len(arr); j++ {
-                fmt.Println(arr[i], arr[j])
-        }
+    for j := 0; j < len(arr); j++ {
+        fmt.Println(arr[i], arr[j])
+    }
 }
 ```
 
@@ -118,41 +117,79 @@ Time doubles with each additional input.
 
 ```go
 func subsets(arr []int) [][]int {
-        if len(arr) == 0 {
-                return [][]int{{}}
-        }
-        first := arr[0]
-        rest := subsets(arr[1:])
-        result := make([][]int, len(rest)*2)
-        copy(result, rest)
-        for i, subset := range rest {
-                result[len(rest)+i] = append([]int{first}, subset...)
-        }
-        return result
+    if len(arr) == 0 {
+        return [][]int{{}}
+    }
+    first := arr[0]
+    rest := subsets(arr[1:])
+    result := make([][]int, len(rest)*2)
+    copy(result, rest)
+    for i, subset := range rest {
+        result[len(rest)+i] = append([]int{first}, subset...)
+    }
+    return result
 }
 ```
 
 ## 4. How to Find Big-O
 
-1. Count the number of basic operations as input grows.
-2. Ignore constants and lower-order terms.
-3. Focus on the dominant term as $n$ becomes large.
+**Count the number of basic operations as input grows:**
+Big O notation measures how the steps an algorithm takes grow as the input gets bigger—like counting how many actions you need as your pile of toys increases.
 
-## 5. Example
-
-Suppose you have a function that loops through an array:
+**Go example:**
 
 ```go
-func printItems(arr []int) {
-        for _, item := range arr {
-                fmt.Println(item)
-        }
+func exampleFunction(arr []int) {
+    sum := 0
+    for _, item := range arr {
+        sum += item
+    }
+    fmt.Println(sum)
 }
 ```
 
-This function is O(n) because it prints each item once.
+**Explanation:** This function loops through the array once, so it’s O(n) because the time grows linearly with the size of `arr`.
 
-## 6. Summary
+**Ignore constants and lower-order terms:**
+Big O shows how fast something grows as your problem gets bigger. We only care about the part that matters most when things get really large.
+
+**Go example:**
+
+```go
+func exampleFunction(arr []int) {
+    for i := 0; i < len(arr); i++ { // O(n)
+        for j := 0; j < len(arr); j++ { // O(n)
+            fmt.Println(arr[i], arr[j]) // O(1)
+        }
+    }
+}
+```
+
+**Explanation:** This function has a nested loop, so we multiply the time complexities: O(n) * O(n) = O(n^2).
+
+**Focus on the dominant term as n becomes large:**
+As input grows, only the fastest-growing part matters. For example, in n^2 + n, n^2 dominates when n is large, so we call it O(n^2).
+
+**Go example:**
+
+```go
+func findDuplicates(arr []int) []int {
+    var duplicates []int
+    for i := 0; i < len(arr); i++ { // O(n)
+        for j := i + 1; j < len(arr); j++ { // O(n)
+            if arr[i] == arr[j] { // O(1)
+                duplicates = append(duplicates, arr[i]) // O(1)
+                break
+            }
+        }
+    }
+    return duplicates // This is O(n^2) overall
+}
+```
+
+**Explanation:** The nested loops give us O(n^2), and we ignore the constant time operations like appending to the slice.
+
+## 5. Summary
 
 Big-O notation helps you analyze and compare algorithms by describing their efficiency as input size increases. It’s a key tool for writing scalable, high-performance code.
 

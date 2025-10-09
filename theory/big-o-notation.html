@@ -382,8 +382,7 @@ code {
 </ul>
 </li>
 <li><a href="#4-how-to-find-big-o">How to Find Big-O</a></li>
-<li><a href="#5-example">Example</a></li>
-<li><a href="#6-summary">Summary</a></li>
+<li><a href="#5-summary">Summary</a></li>
 </ul>
 <hr>
 <h2 id="1-introduction">1. Introduction</h2>
@@ -404,82 +403,109 @@ code {
 <p>Time grows slowly as input increases.</p>
 <p><strong>Example:</strong> Binary search in a sorted array</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">binarySearch</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>, target <span class="hljs-keyword">int</span>)</span> <span class="hljs-title">int</span></span> {
-        left, right := <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)<span class="hljs-number">-1</span>
-        <span class="hljs-keyword">for</span> left &lt;= right {
-                mid := (left + right) / <span class="hljs-number">2</span>
-                <span class="hljs-keyword">if</span> arr[mid] == target {
-                        <span class="hljs-keyword">return</span> mid
-                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> arr[mid] &lt; target {
-                        left = mid + <span class="hljs-number">1</span>
-                } <span class="hljs-keyword">else</span> {
-                        right = mid - <span class="hljs-number">1</span>
-                }
+    left, right := <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr)<span class="hljs-number">-1</span>
+    <span class="hljs-keyword">for</span> left &lt;= right {
+        mid := (left + right) / <span class="hljs-number">2</span>
+        <span class="hljs-keyword">if</span> arr[mid] == target {
+            <span class="hljs-keyword">return</span> mid
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> arr[mid] &lt; target {
+            left = mid + <span class="hljs-number">1</span>
+        } <span class="hljs-keyword">else</span> {
+            right = mid - <span class="hljs-number">1</span>
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>
 }
 </div></code></pre>
 <h3 id="33-on--linear-time">3.3. O(n) — Linear Time</h3>
 <p>Time grows directly with input size.</p>
 <p><strong>Example:</strong> Looping through all elements in an array</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
-        fmt.Println(item)
+    fmt.Println(item)
 }
 </div></code></pre>
 <h3 id="34-on-log-n--linearithmic-time">3.4. O(n log n) — Linearithmic Time</h3>
 <p>Common in efficient sorting algorithms.</p>
 <p><strong>Example:</strong> Mergesort algorithm</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">mergeSort</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> []<span class="hljs-title">int</span></span> {
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) &lt;= <span class="hljs-number">1</span> {
-                <span class="hljs-keyword">return</span> arr
-        }
-        mid := <span class="hljs-built_in">len</span>(arr) / <span class="hljs-number">2</span>
-        left := mergeSort(arr[:mid])
-        right := mergeSort(arr[mid:])
-        <span class="hljs-keyword">return</span> merge(left, right)
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) &lt;= <span class="hljs-number">1</span> {
+        <span class="hljs-keyword">return</span> arr
+    }
+    mid := <span class="hljs-built_in">len</span>(arr) / <span class="hljs-number">2</span>
+    left := mergeSort(arr[:mid])
+    right := mergeSort(arr[mid:])
+    <span class="hljs-keyword">return</span> merge(left, right)
 }
 </div></code></pre>
 <h3 id="35-on2--quadratic-time">3.5. O(n^2) — Quadratic Time</h3>
 <p>Time grows with the square of input size.</p>
 <p><strong>Example:</strong> Nested loops to compare all pairs</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ {
-        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(arr); j++ {
-                fmt.Println(arr[i], arr[j])
-        }
+    <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(arr); j++ {
+        fmt.Println(arr[i], arr[j])
+    }
 }
 </div></code></pre>
 <h3 id="36-o2n--exponential-time">3.6. O(2^n) — Exponential Time</h3>
 <p>Time doubles with each additional input.</p>
 <p><strong>Example:</strong> Generating all subsets of a set</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">subsets</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> [][]<span class="hljs-title">int</span></span> {
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) == <span class="hljs-number">0</span> {
-                <span class="hljs-keyword">return</span> [][]<span class="hljs-keyword">int</span>{{}}
-        }
-        first := arr[<span class="hljs-number">0</span>]
-        rest := subsets(arr[<span class="hljs-number">1</span>:])
-        result := <span class="hljs-built_in">make</span>([][]<span class="hljs-keyword">int</span>, <span class="hljs-built_in">len</span>(rest)*<span class="hljs-number">2</span>)
-        <span class="hljs-built_in">copy</span>(result, rest)
-        <span class="hljs-keyword">for</span> i, subset := <span class="hljs-keyword">range</span> rest {
-                result[<span class="hljs-built_in">len</span>(rest)+i] = <span class="hljs-built_in">append</span>([]<span class="hljs-keyword">int</span>{first}, subset...)
-        }
-        <span class="hljs-keyword">return</span> result
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> [][]<span class="hljs-keyword">int</span>{{}}
+    }
+    first := arr[<span class="hljs-number">0</span>]
+    rest := subsets(arr[<span class="hljs-number">1</span>:])
+    result := <span class="hljs-built_in">make</span>([][]<span class="hljs-keyword">int</span>, <span class="hljs-built_in">len</span>(rest)*<span class="hljs-number">2</span>)
+    <span class="hljs-built_in">copy</span>(result, rest)
+    <span class="hljs-keyword">for</span> i, subset := <span class="hljs-keyword">range</span> rest {
+        result[<span class="hljs-built_in">len</span>(rest)+i] = <span class="hljs-built_in">append</span>([]<span class="hljs-keyword">int</span>{first}, subset...)
+    }
+    <span class="hljs-keyword">return</span> result
 }
 </div></code></pre>
 <h2 id="4-how-to-find-big-o">4. How to Find Big-O</h2>
-<ol>
-<li>Count the number of basic operations as input grows.</li>
-<li>Ignore constants and lower-order terms.</li>
-<li>Focus on the dominant term as $n$ becomes large.</li>
-</ol>
-<h2 id="5-example">5. Example</h2>
-<p>Suppose you have a function that loops through an array:</p>
-<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">printItems</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
-        <span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
-                fmt.Println(item)
-        }
+<p><strong>Count the number of basic operations as input grows:</strong>
+Big O notation measures how the steps an algorithm takes grow as the input gets bigger—like counting how many actions you need as your pile of toys increases.</p>
+<p><strong>Go example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">exampleFunction</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
+    sum := <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> _, item := <span class="hljs-keyword">range</span> arr {
+        sum += item
+    }
+    fmt.Println(sum)
 }
 </div></code></pre>
-<p>This function is O(n) because it prints each item once.</p>
-<h2 id="6-summary">6. Summary</h2>
+<p><strong>Explanation:</strong> This function loops through the array once, so it’s O(n) because the time grows linearly with the size of <code>arr</code>.</p>
+<p><strong>Ignore constants and lower-order terms:</strong>
+Big O shows how fast something grows as your problem gets bigger. We only care about the part that matters most when things get really large.</p>
+<p><strong>Go example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">exampleFunction</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span></span> {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ { <span class="hljs-comment">// O(n)</span>
+        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(arr); j++ { <span class="hljs-comment">// O(n)</span>
+            fmt.Println(arr[i], arr[j]) <span class="hljs-comment">// O(1)</span>
+        }
+    }
+}
+</div></code></pre>
+<p><strong>Explanation:</strong> This function has a nested loop, so we multiply the time complexities: O(n) * O(n) = O(n^2).</p>
+<p><strong>Focus on the dominant term as n becomes large:</strong>
+As input grows, only the fastest-growing part matters. For example, in n^2 + n, n^2 dominates when n is large, so we call it O(n^2).</p>
+<p><strong>Go example:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">findDuplicates</span><span class="hljs-params">(arr []<span class="hljs-keyword">int</span>)</span> []<span class="hljs-title">int</span></span> {
+    <span class="hljs-keyword">var</span> duplicates []<span class="hljs-keyword">int</span>
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(arr); i++ { <span class="hljs-comment">// O(n)</span>
+        <span class="hljs-keyword">for</span> j := i + <span class="hljs-number">1</span>; j &lt; <span class="hljs-built_in">len</span>(arr); j++ { <span class="hljs-comment">// O(n)</span>
+            <span class="hljs-keyword">if</span> arr[i] == arr[j] { <span class="hljs-comment">// O(1)</span>
+                duplicates = <span class="hljs-built_in">append</span>(duplicates, arr[i]) <span class="hljs-comment">// O(1)</span>
+                <span class="hljs-keyword">break</span>
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> duplicates <span class="hljs-comment">// This is O(n^2) overall</span>
+}
+</div></code></pre>
+<p><strong>Explanation:</strong> The nested loops give us O(n^2), and we ignore the constant time operations like appending to the slice.</p>
+<h2 id="5-summary">5. Summary</h2>
 <p>Big-O notation helps you analyze and compare algorithms by describing their efficiency as input size increases. It’s a key tool for writing scalable, high-performance code.</p>
 <hr>
 <p><em>Expand each section with more details as you learn.</em>
