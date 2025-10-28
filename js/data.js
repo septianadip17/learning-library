@@ -1,16 +1,16 @@
 const tabsConfig = [
-    { id: 'all', label: 'All' },
-    { id: 'dsa-alg', label: 'DSA & Algo' },
-    { id: 'system-design', label: 'System Design' },
-    { id: 'english', label: 'English' }
+  { id: "all", label: "All" },
+  { id: "dsa-alg", label: "DSA & Algo" },
+  { id: "system-design", label: "System Design" },
+  { id: "english", label: "English" },
 ];
 
 const cards = [
-    {
-        id: 'data-structures',
-        title: 'Data Structures',
-        sections: ['all', 'dsa-alg'],
-        content: `
+  {
+    id: "data-structures",
+    title: "Data Structures",
+    sections: ["all", "dsa-alg"],
+    content: `
             <ul>
                 <li><a href="theory/data-structures.html#1-introduction">Introduction</a></li>
                 <li><a href="theory/data-structures.html#2-types-of-data-structures">Types of Data Structures</a></li>
@@ -34,13 +34,13 @@ const cards = [
                     </ul>
                 </li>
             </ul>
-        `
-    },
-    {
-        id: 'operations-on-data-structures',
-        title: 'Operations on Data Structures',
-        sections: ['all', 'dsa-alg'],
-        content: `
+        `,
+  },
+  {
+    id: "operations-on-data-structures",
+    title: "Operations on Data Structures",
+    sections: ["all", "dsa-alg"],
+    content: `
             <ul>
                 <li><a href="theory/operations-on-data-structures.html#insertion">Insertion</a></li>
                 <li><a href="theory/operations-on-data-structures.html#deletion">Deletion</a></li>
@@ -48,13 +48,13 @@ const cards = [
                 <li><a href="theory/operations-on-data-structures.html#searching">Searching</a></li>
                 <li><a href="theory/operations-on-data-structures.html#sorting">Sorting</a></li>
             </ul>
-        `
-    },
-    {
-        id: 'big-o-notation',
-        title: 'Big O Notation',
-        sections: ['all', 'dsa-alg'],
-        content: `
+        `,
+  },
+  {
+    id: "big-o-notation",
+    title: "Big O Notation",
+    sections: ["all", "dsa-alg"],
+    content: `
             <ul>
                 <li><a href="theory/big-o-notation.html#1-introduction">Introduction</a></li>
                 <li><a href="theory/big-o-notation.html#2-why-is-big-o-important">Why is Big-O Important?</a></li>
@@ -71,7 +71,17 @@ const cards = [
                 <li><a href="theory/big-o-notation.html#4-how-to-find-big-o">How to Find Big-O</a></li>
                 <li><a href="theory/big-o-notation.html#5-summary">Summary</a></li>
             </ul>
-        `
-    }
-    // Tambahkan card lain di sini sesuai kebutuhan
+        `,
+  },
+  {
+    id: "mysql",
+    title: "MySQL",
+    sections: ["all", "system-design"],
+    content: `
+            <ul></ul>
+                <li><a href="theory/mysql.html#1-introduction">Introduction</a></li>
+            </ul>
+        `,
+  },
+  // Tambahkan card lain di sini sesuai kebutuhan
 ];
