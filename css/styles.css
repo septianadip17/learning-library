@@ -70,6 +70,17 @@ body {
   border-bottom-color: #ddd;
 }
 
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
 .tabs {
   display: flex;
   gap: 8px;
