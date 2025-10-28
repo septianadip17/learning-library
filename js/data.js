@@ -119,5 +119,45 @@ const cards = [
         </ul>
     `,
   },
+  {
+    id: "relational-database",
+    title: "Relational Database",
+    sections: ["all", "system-design"],
+    content: `
+        <ul>
+            <li><a href="theory/relational-database.html#1-pengertian-relational-database">Pengertian Relational Database</a></li>
+            <li><a href="theory/relational-database.html#2-konsep-dasar">Konsep Dasar</a></li>
+            <li><a href="theory/relational-database.html#3-jenis-relasi-antar-tabel">Jenis Relasi Antar Tabel</a>
+                <ul>
+                    <li><a href="theory/relational-database.html#one-to-one">One to One</a></li>
+                    <li><a href="theory/relational-database.html#one-to-many">One to Many</a></li>
+                    <li><a href="theory/relational-database.html#many-to-many">Many to Many</a></li>
+                </ul>
+            </li>
+            <li><a href="theory/relational-database.html#4-contoh-skema-relasional">Contoh Skema Relasional</a></li>
+            <li><a href="theory/relational-database.html#5-contoh-query-relasional-dan-outputnya">Contoh Query Relasional dan Outputnya</a>
+                <ul>
+                    <li><a href="theory/relational-database.html#a-menampilkan-semua-data-pelanggan">Menampilkan Semua Data Pelanggan</a></li>
+                    <li><a href="theory/relational-database.html#b-menampilkan-semua-data-orders">Menampilkan Semua Data Orders</a></li>
+                    <li><a href="theory/relational-database.html#c-menampilkan-semua-order-beserta-nama-pelanggan-inner-join">INNER JOIN</a></li>
+                    <li><a href="theory/relational-database.html#d-menampilkan-semua-pelanggan-dan-order-nya-left-join">LEFT JOIN</a></li>
+                    <li><a href="theory/relational-database.html#e-menambah-order-baru-untuk-pelanggan">Menambah Order Baru</a></li>
+                    <li><a href="theory/relational-database.html#f-menampilkan-semua-order-beserta-nama-pelanggan-setelah-penambahan">Order Setelah Penambahan</a></li>
+                    <li><a href="theory/relational-database.html#g-menampilkan-jumlah-order-per-pelanggan-group-by">GROUP BY</a></li>
+                    <li><a href="theory/relational-database.html#h-menampilkan-pelanggan-yang-belum-pernah-order">Pelanggan Belum Pernah Order</a></li>
+                </ul>
+            </li>
+            <li><a href="theory/relational-database.html#6-integrity-constraint-kendala-integritas">Integrity Constraint</a></li>
+            <li><a href="theory/relational-database.html#7-normalisasi-contoh-end-to-end">Normalisasi (Contoh End-to-End)</a>
+                <ul>
+                    <li><a href="theory/relational-database.html#a-tabel-belum-dinormalisasi-unnormalized-table">Tabel Belum Dinormalisasi</a></li>
+                    <li><a href="theory/relational-database.html#b-normalisasi-ke-1nf-first-normal-form">Normalisasi ke 1NF</a></li>
+                    <li><a href="theory/relational-database.html#c-query-data-setelah-normalisasi">Query Data Setelah Normalisasi</a></li>
+                    <li><a href="theory/relational-database.html#d-keuntungan-setelah-normalisasi">Keuntungan Setelah Normalisasi</a></li>
+                </ul>
+            </li>
+        </ul>
+    `,
+  },
   // Tambahkan card lain di sini sesuai kebutuhan
 ];
