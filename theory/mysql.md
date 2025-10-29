@@ -200,11 +200,11 @@ SELECT * FROM pelanggan ORDER BY nama DESC;
 | 3  | Sari      | sari@email.com      |
 | 4  | Rina      | rina@email.com      |
 | 6  | Lina      | lina@email.com      |
-| 2  | Andi      | andi@email.com      |
+| 2  | Dewi      | dewi@email.com      |
 | 5  | Dedi      | dedi@email.com      |
 | 1  | Budi      | budi@email.com      |
-| 9  | Agus      | agus@email.com      |
-| 10 | Dewi      | dewi@email.com      |
+| 9  | Andi      | andi@email.com      |
+| 10 | Agus      | agus@email.com      |
 
 ### Mencari Data (WHERE)
 ```sql

@@ -1,0 +1,21 @@
+soal Coding:
+ 
+Input 3 nilai:
+TUGAS = 85
+UTS = 90
+UAS = 100
+ 
+Hitung nilai akhir dengan rumus:
+TUGAS = 25%, UTS = 30%, UAS = 45%.
+Setelah didapat nilai akhir, tentukan grade dengan ketentuan:
+Nilai 80 ke atas → A
+Di atas 70 → B
+Di atas 55 → C
+Di atas 40 → D
+Selain itu → E
+ 
+Tampilkan hasil seperti contoh:
+Nilai Akhir: 93.50
+Grade: A
+
+
